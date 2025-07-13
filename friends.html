@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends | Cosmic Portal</title>
+  <style>
+    /* --- Base and Reset Styles --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+      background-color: #000000;
+      color: #e0e0e0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto; /* Allow scrolling for content */
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    /* --- Cosmic Background Canvas --- */
+    #space-canvas {
+      position: fixed; /* Fixed position to stay in background while scrolling */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Place it behind all content */
+    }
+
+    /* --- Main Content Container --- */
+    .container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 600px;
+      gap: 30px;
+    }
+
+    /* --- Section Title --- */
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 15px rgba(180, 120, 255, 0.7);
+        margin-bottom: 10px;
+    }
+
+    /* --- Friend Card Styles --- */
+    .friend-card {
+      background: rgba(15, 10, 25, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 0 40px rgba(160, 60, 255, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .friend-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 50px rgba(160, 60, 255, 0.3);
+    }
+
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .friend-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .friend-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+    }
+    
+    .friend-links a {
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(30, 30, 40, 0.7);
+      color: #f0f0f0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+    }
+    
+    .friend-links a:hover {
+        transform: scale(1.05);
+        background: rgba(50, 50, 60, 0.9);
+        border-color: rgba(255, 255, 255, 0.5);
+        color: #fff;
+    }
+
+    .friend-links .svg-icon {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+    }
+
+    .profile-size {
+      max-width: 120px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    }
+
+  </style>
+</head>
+<body>
+
+  <canvas id="space-canvas"></canvas>
+
+  <div class="container">
+    <h1 class="section-title">Best Friends</h1>
+    <div class="friend-card">
+        <div class="profile-pic">
+            <!-- Placeholder for profile picture -->
+            <img src="img/nimagamer128.png" alt="Nimagamer128 Profile Picture" style="border-radius: 50%;" class="profile-size">
+        </div>
+        <h2 class="friend-name">Nimagamer128</h2>
+        <div class="friend-links">
+            <a href="https://discord.unknownmsv.ir" target="_blank" rel="noopener noreferrer">
+                <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4464.8254-.6184 1.2525a17.7322 17.7322 0 00-5.485 0c-.172-.4271-.4074-.8772-.6184-1.2525a.0741.0741 0 00-.0785-.0371 19.7913 19.7913 0 00-4.8851 1.5152.069.069 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0321.0561c2.0527 1.5826 4.1204 2.5732 6.1879 3.08a.0741.0741 0 00.084-.0561c.4216-1.7778.6826-3.5882.772-5.4182a.069.069 0 00-.0216-.0561 17.2136 17.2136 0 01-2.6822-1.2325.069.069 0 01-.0104-.0918c.12-.1157.2403-.2314.352-.3565a.069.069 0 01.084-.0056c4.4087 2.464 9.5442 2.464 13.953 0a.069.069 0 01.084-.0056c.1117.1251.232.2408.352.3565a.069.069 0 01-.0104.0918 17.2136 17.2136 0 01-2.6822 1.2325.069.069 0 00-.0216.0561c.0894 1.83.3504 3.6404.772 5.4182a.0741.0741 0 00.084.0561c2.0675-.5068 4.1352-1.4974 6.1879-3.08a.0824.0824 0 00.0321-.0561c.5006-4.785-.8526-9.298-3.5485-13.6602a.069.069 0 00-.0321-.0277zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9744-2.419 2.1569-2.419 1.1929 0 2.157 1.0858 2.1466 2.419 0 1.3333-.9537 2.419-2.1466 2.419zm7.9648 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9744-2.419 2.1569-2.419 1.1929 0 2.157 1.0858 2.1466 2.419 0 1.3333-.9537 2.419-2.1466 2.419z"></path></svg>
+                <span>Discord</span>
+            </a>
+        </div>
+    </div>
+
+    <h1 class="section-title" style="margin-top: 20px;">Friends</h1>
+    <div class="friend-card">
+        <div class="profile-pic">
+            <img src="img/Lambda.png" alt="Lambda Profile Picture" style="border-radius: 50%;" class="profile-size">
+        </div>
+        <h2 class="friend-name">Lambda</h2>
+        <div class="friend-links">
+            <a href="https://github.com/ramin-0900" target="_blank" rel="noopener noreferrer"> <!-- Placeholder for GitHub link -->
+                <svg class="svg-icon" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+                <span>GitHub</span>
+            </a>
+            <a href="https://discord.gg/fWXNk3FRMq" target="_blank" rel="noopener noreferrer"> <!-- Placeholder for Discord link -->
+                <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4464.8254-.6184 1.2525a17.7322 17.7322 0 00-5.485 0c-.172-.4271-.4074-.8772-.6184-1.2525a.0741.0741 0 00-.0785-.0371 19.7913 19.7913 0 00-4.8851 1.5152.069.069 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0321.0561c2.0527 1.5826 4.1204 2.5732 6.1879 3.08a.0741.0741 0 00.084-.0561c.4216-1.7778.6826-3.5882.772-5.4182a.069.069 0 00-.0216-.0561 17.2136 17.2136 0 01-2.6822-1.2325.069.069 0 01-.0104-.0918c.12-.1157.2403-.2314.352-.3565a.069.069 0 01.084-.0056c4.4087 2.464 9.5442 2.464 13.953 0a.069.069 0 01.084-.0056c.1117.1251.232.2408.352.3565a.069.069 0 01-.0104.0918 17.2136 17.2136 0 01-2.6822 1.2325.069.069 0 00-.0216.0561c.0894 1.83.3504 3.6404.772 5.4182a.0741.0741 0 00.084.0561c2.0675-.5068 4.1352-1.4974 6.1879-3.08a.0824.0824 0 00.0321-.0561c.5006-4.785-.8526-9.298-3.5485-13.6602a.069.069 0 00-.0321-.0277zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9744-2.419 2.1569-2.419 1.1929 0 2.157 1.0858 2.1466 2.419 0 1.3333-.9537 2.419-2.1466 2.419zm7.9648 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9744-2.419 2.1569-2.419 1.1929 0 2.157 1.0858 2.1466 2.419 0 1.3333-.9537 2.419-2.1466 2.419z"></path></svg>
+                <span>Discord</span>
+            </a>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- Canvas Setup ---
+      const canvas = document.getElementById('space-canvas');
+      const ctx = canvas.getContext('2d');
+      let stars = [], blackHole, nebulas = [], sun, saturn, earth, mars, moon;
+      let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+      function init() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        // Celestial bodies setup
+        sun = { x: canvas.width * 0.9, y: canvas.height * 0.1, radius: 60, parallax: 0.1 };
+        blackHole = { x: canvas.width / 2, y: canvas.height / 2, radius: 40, angle: 0, parallax: 0.05 };
+        saturn = { x: canvas.width * 0.15, y: canvas.height * 0.2, radius: 30, parallax: 0.08 };
+        earth = { x: canvas.width * 0.8, y: canvas.height * 0.8, radius: 25, parallax: 0.06 };
+        mars = { x: canvas.width * 0.2, y: canvas.height * 0.75, radius: 20, parallax: 0.07 };
+        moon = { orbitRadius: 45, angle: 0, parallax: 0.06 };
+
+        stars = [];
+        const starCount = window.innerWidth > 768 ? 600 : 300;
+        for (let i = 0; i < starCount; i++) {
+            stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 1.5, alpha: Math.random() * 0.5 + 0.5, twinkle: Math.random() * 0.02, parallax: Math.random() * 0.04 + 0.01 });
+        }
+        
+        nebulas = [];
+        for(let i = 0; i < 3; i++) {
+            nebulas.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 200 + 150, color: `rgba(${100 + Math.random() * 50}, ${50 + Math.random() * 50}, ${150 + Math.random() * 50}, 0.15)`, speedX: (Math.random() - 0.5) * 0.1, speedY: (Math.random() - 0.5) * 0.1 });
+        }
+      }
+
+      // --- Drawing Functions for Celestial Bodies ---
+      function drawSun(x, y) {
+        ctx.save();
+        ctx.translate(x, y);
+        const glow = ctx.createRadialGradient(0, 0, sun.radius * 0.8, 0, 0, sun.radius * 2.5);
+        glow.addColorStop(0, 'rgba(255, 255, 220, 1)');
+        glow.addColorStop(0.2, 'rgba(255, 220, 100, 0.5)');
+        glow.addColorStop(0.5, 'rgba(255, 180, 50, 0.1)');
+        glow.addColorStop(1, 'rgba(255, 150, 0, 0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(0, 0, sun.radius * 2.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function drawSaturn(x, y) { /* ... same as before ... */ ctx.save(); ctx.translate(x,y); ctx.strokeStyle='rgba(210,180,140,0.7)'; ctx.lineWidth=4; ctx.beginPath(); ctx.ellipse(0,0,saturn.radius*2.2,saturn.radius*0.8,-0.4,0,Math.PI*2); ctx.stroke(); ctx.fillStyle='#E3B971'; ctx.beginPath(); ctx.arc(0,0,saturn.radius,0,Math.PI*2); ctx.fill(); ctx.restore(); }
+      function drawEarth(x, y) { /* ... same as before ... */ ctx.save(); ctx.translate(x,y); const g=ctx.createRadialGradient(0,0,earth.radius,0,0,earth.radius*1.5); g.addColorStop(0,'rgba(100,150,255,0.3)'); g.addColorStop(1,'rgba(100,150,255,0)'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(0,0,earth.radius*1.5,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#4D94DB'; ctx.beginPath(); ctx.arc(0,0,earth.radius,0,Math.PI*2); ctx.fill(); ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.beginPath(); ctx.ellipse(-5,-10,20,8,0.5,0,Math.PI*2); ctx.ellipse(10,5,18,6,-0.3,0,Math.PI*2); ctx.fill(); ctx.restore(); }
+      
+      function drawMars(x, y) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.fillStyle = '#C1440E';
+        ctx.beginPath();
+        ctx.arc(0, 0, mars.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; // Polar cap
+        ctx.beginPath();
+        ctx.arc(0, -mars.radius + 3, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function drawMoon(x, y) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.fillStyle = '#B0B0B0';
+        ctx.beginPath();
+        ctx.arc(0, 0, 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // --- Main Animation Loop ---
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const parallaxX = (mouse.x - canvas.width / 2) * 0.5; // Reduced intensity
+        const parallaxY = (mouse.y - canvas.height / 2) * 0.5;
+
+        // Draw background elements first
+        nebulas.forEach(n => { n.x += n.speedX; n.y += n.speedY; if(n.x+n.radius<0) n.x=canvas.width+n.radius; if(n.x-n.radius>canvas.width) n.x=-n.radius; if(n.y+n.radius<0) n.y=canvas.height+n.radius; if(n.y-n.radius>canvas.height) n.y=-n.radius; const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.radius); g.addColorStop(0,n.color); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.fillRect(0,0,canvas.width,canvas.height); });
+        stars.forEach(s => { const sx=s.x+parallaxX*s.parallax; const sy=s.y+parallaxY*s.parallax; s.alpha+=s.twinkle; if(s.alpha>1||s.alpha<0.5) s.twinkle=-s.twinkle; ctx.globalAlpha=s.alpha; ctx.fillStyle='white'; ctx.beginPath(); ctx.arc(sx,sy,s.radius,0,Math.PI*2); ctx.fill(); });
+        ctx.globalAlpha = 1;
+        
+        // Calculate positions with parallax
+        const sunX = sun.x + parallaxX * sun.parallax;
+        const sunY = sun.y + parallaxY * sun.parallax;
+        const saturnX = saturn.x + parallaxX * saturn.parallax;
+        const saturnY = saturn.y + parallaxY * saturn.parallax;
+        const earthX = earth.x + parallaxX * earth.parallax;
+        const earthY = earth.y + parallaxY * earth.parallax;
+        const marsX = mars.x + parallaxX * mars.parallax;
+        const marsY = mars.y + parallaxY * mars.parallax;
+        const bhX = blackHole.x + parallaxX * blackHole.parallax;
+        const bhY = blackHole.y + parallaxY * blackHole.parallax;
+        
+        // Moon orbiting Earth
+        moon.angle += 0.01;
+        const moonX = earthX + moon.orbitRadius * Math.cos(moon.angle);
+        const moonY = earthY + moon.orbitRadius * Math.sin(moon.angle);
+
+        // Draw celestial bodies
+        drawSun(sunX, sunY);
+        drawSaturn(saturnX, saturnY);
+        drawMars(marsX, marsY);
+        drawEarth(earthX, earthY);
+        drawMoon(moonX, moonY);
+
+        // Draw Black Hole
+        ctx.save(); ctx.translate(bhX, bhY);
+        ctx.fillStyle='black'; ctx.beginPath(); ctx.arc(0,0,blackHole.radius,0,Math.PI*2); ctx.fill();
+        ctx.rotate(blackHole.angle); const dG=ctx.createLinearGradient(-blackHole.radius*2.5,0,blackHole.radius*2.5,0); dG.addColorStop(0,'rgba(255,200,0,0.8)'); dG.addColorStop(0.5,'rgba(160,60,255,0.9)'); dG.addColorStop(1,'rgba(255,200,0,0.8)');
+        ctx.strokeStyle=dG; ctx.lineWidth=3; ctx.shadowColor='rgba(160,60,255,0.7)'; ctx.shadowBlur=15;
+        ctx.beginPath(); ctx.ellipse(0,0,blackHole.radius*2,blackHole.radius*0.7,0,0,Math.PI*2); ctx.stroke();
+        ctx.lineWidth=1.5; ctx.shadowBlur=5; ctx.beginPath(); ctx.ellipse(0,0,blackHole.radius*1.5,blackHole.radius*0.5,0,0,Math.PI*2); ctx.stroke();
+        ctx.restore(); blackHole.angle += 0.003;
+
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', init);
+      window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+      init();
+      draw();
+    });
+  </script>
+</body>
+</html>
