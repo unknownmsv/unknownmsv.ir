@@ -190,3 +190,106 @@
         left: 0px; /* فاصله از چپ در موبایل */
         bottom: 0px;
     }}
+
+/* --- Auth Forms --- */
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: right;
+}
+
+.auth-form h2 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(160, 60, 255, 0.5);
+  text-align: center;
+}
+
+.input-group {
+  width: 100%;
+  position: relative;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #e0e0e0;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  text-align: right;
+}
+
+.auth-form input::placeholder {
+    color: #888;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: rgba(160, 60, 255, 0.7);
+  box-shadow: 0 0 15px rgba(160, 60, 255, 0.4);
+}
+
+.auth-form .btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.form-link {
+  color: #c0c0c0;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: color 0.3s;
+  display: block;
+  text-align: center;
+}
+
+.form-link:hover {
+  color: #ff69b4;
+  text-decoration: underline;
+}
+
+#auth-message {
+  margin-top: 15px;
+  color: #ff5566;
+  font-weight: bold;
+  min-height: 20px;
+  text-align: center;
+}
+
+/* --- Auth UI on Main Page --- */
+.auth-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#user-info {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#user-email {
+    font-size: 18px;
+    color: #fff;
+    background: rgba(0,0,0,0.2);
+    padding: 5px 15px;
+    border-radius: 15px;
+    direction: ltr; /* Keep email display LTR */
+}
+
+#user-info p {
+    font-size: 20px;
+}
