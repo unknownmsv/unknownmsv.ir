@@ -2,8 +2,8 @@
 
 // --- Supabase Configuration ---
 // IMPORTANT: Replace with your actual Supabase Project URL and Anon Key
-const supabaseUrl = 'https://pawcksrjfjrezljrjiyh.supabase.co'; // <-- اینجا آدرس پروژه سوپابیس خود را قرار دهید
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBhd2Nrc3JqZmpyZXpsanJqaXloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI5MjcyOTAsImV4cCI6MjA2ODUwMzI5MH0.HGgXdGSfN7XkqjJxFzH6rsURqC69GorKt09B5o65Ioc'; // <-- اینجا کلید عمومی (Anon Key) پروژه خود را قرار دهید
+const supabaseUrl = 'https://hjyhaorykdgxujfurtuo.supabase.co'; // <-- اینجا آدرس پروژه سوپابیس خود را قرار دهید
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhqeWhhb3J5a2RneHVqZnVydHVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI5MzMwNjQsImV4cCI6MjA2ODUwOTA2NH0.ahidaNgaVqana_njyFin6KVQH5y42jzRcsum8TP4U4U'; // <-- اینجا کلید عمومی (Anon Key) پروژه خود را قرار دهید
 
 // --- Initialize Supabase Client ---
 // Create a single Supabase client for the entire app
